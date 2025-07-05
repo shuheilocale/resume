@@ -1,0 +1,25 @@
+{
+  "name": "resume",
+  "version": "1.0.0",
+  "description": "Shuhei Yamamoto's Resume",
+  "scripts": {
+    "serve": "npx http-server -p 8080",
+    "lint": "markdownlint ja/index.md en/index.md --config .markdownlint.json",
+    "lint:fix": "markdownlint ja/index.md en/index.md --config .markdownlint.json --fix",
+    "pdf:ja": "md-to-pdf ja/index.md --pdf-options '{\"format\": \"A4\", \"margin\": \"20mm\"}' --dest dist/resume_ja.pdf",
+    "pdf:en": "md-to-pdf en/index.md --pdf-options '{\"format\": \"A4\", \"margin\": \"20mm\"}' --dest dist/resume_en.pdf",
+    "pdf": "npm run pdf:ja && npm run pdf:en",
+    "update-date": "node scripts/update-date.js"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "markdownlint-cli": "^0.37.0",
+    "md-to-pdf": "^5.2.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shuheilocale/resume.git"
+  },
+  "author": "Shuhei Yamamoto",
+  "license": "MIT"
+}

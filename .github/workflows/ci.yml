@@ -1,0 +1,113 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install markdownlint-cli
+        run: npm install -g markdownlint-cli
+      
+      - name: Run Markdown Lint
+        run: |
+          markdownlint ja/index.md en/index.md --config .markdownlint.json || true
+      
+      - name: Check spelling
+        uses: check-spelling/check-spelling@main
+        with:
+          config: .github/spellcheck.yml
+        continue-on-error: true
+
+  generate-pdf:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install md-to-pdf
+        run: npm install -g md-to-pdf
+      
+      - name: Generate Japanese PDF
+        run: |
+          mkdir -p dist
+          md-to-pdf ja/index.md --pdf-options '{"format": "A4", "margin": "20mm", "displayHeaderFooter": true, "headerTemplate": "<div style=\"font-size: 9px; margin-left: 20px;\">山本修平 - 職務経歴書</div>", "footerTemplate": "<div style=\"font-size: 9px; margin: 0 auto;\"><span class=\"pageNumber\"></span> / <span class=\"totalPages\"></span></div>"}' --dest dist/resume_ja.pdf
+      
+      - name: Generate English PDF
+        run: |
+          md-to-pdf en/index.md --pdf-options '{"format": "A4", "margin": "20mm", "displayHeaderFooter": true, "headerTemplate": "<div style=\"font-size: 9px; margin-left: 20px;\">Shuhei Yamamoto - Resume</div>", "footerTemplate": "<div style=\"font-size: 9px; margin: 0 auto;\"><span class=\"pageNumber\"></span> / <span class=\"totalPages\"></span></div>"}' --dest dist/resume_en.pdf
+      
+      - name: Upload PDFs as artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: resume-pdfs
+          path: dist/*.pdf
+
+  update-metadata:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Update last modified date
+        run: |
+          DATE=$(date +%Y/%m/%d)
+          sed -i "s/|最終更新|.*|/|最終更新|${DATE}|/" ja/index.md
+          sed -i "s/|Last Updated|.*|/|Last Updated|${DATE}|/" en/index.md
+      
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git diff --staged --quiet || git commit -m "chore: update last modified date [skip ci]"
+          git push
+
+  release:
+    runs-on: ubuntu-latest
+    needs: [generate-pdf]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Download PDFs
+        uses: actions/download-artifact@v4
+        with:
+          name: resume-pdfs
+          path: dist
+      
+      - name: Get current date
+        id: date
+        run: echo "date=$(date +'%Y%m%d')" >> $GITHUB_OUTPUT
+      
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.date.outputs.date }}
+          name: Resume Update - ${{ steps.date.outputs.date }}
+          draft: false
+          prerelease: false
+          files: |
+            dist/resume_ja.pdf
+            dist/resume_en.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

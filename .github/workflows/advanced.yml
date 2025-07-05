@@ -1,0 +1,99 @@
+name: Advanced Features
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '0 0 1 * *'  # Monthly on the 1st
+
+jobs:
+  generate-ogp:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install puppeteer
+        run: |
+          npm install puppeteer
+      
+      - name: Generate OGP images
+        run: |
+          mkdir -p assets/ogp
+          node scripts/generate-ogp.js
+      
+      - name: Commit OGP images
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add assets/ogp
+          git diff --staged --quiet || git commit -m "chore: update OGP images [skip ci]"
+          git push
+
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Lighthouse Check
+        uses: foo-software/lighthouse-check-action@master
+        with:
+          urls: |
+            https://shuheilocale.github.io/resume/
+            https://shuheilocale.github.io/resume/ja/
+            https://shuheilocale.github.io/resume/en/
+          outputDirectory: './lighthouse-results'
+      
+      - name: Upload Lighthouse results
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-results
+          path: ./lighthouse-results
+
+  backup:
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '0 0 1 * *'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Create backup
+        run: |
+          BACKUP_DATE=$(date +%Y%m%d)
+          git bundle create resume-backup-${BACKUP_DATE}.bundle --all
+      
+      - name: Upload backup
+        uses: actions/upload-artifact@v4
+        with:
+          name: resume-backup-${{ github.run_id }}
+          path: resume-backup-*.bundle
+          retention-days: 90
+
+  analyze-content:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Install dependencies
+        run: |
+          pip install textstat nltk
+      
+      - name: Analyze readability
+        run: |
+          python scripts/analyze-readability.py
+      
+      - name: Generate word cloud
+        run: |
+          pip install wordcloud matplotlib
+          python scripts/generate-wordcloud.py

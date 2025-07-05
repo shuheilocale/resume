@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shuhei Yamamoto - Resume / 山本修平 - 職務経歴書</title>
+    <meta name="description" content="Software Engineer / Product Manager - Resume">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f6f8fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 50px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #24292e;
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            color: #586069;
+            margin-bottom: 40px;
+        }
+        
+        .languages {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .language-card {
+            flex: 1;
+            min-width: 200px;
+            text-decoration: none;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .language-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .language-card.japanese {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .language-card.english {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .language-card h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        
+        .language-card p {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .languages {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>山本 修平</h1>
+        <h1>Shuhei Yamamoto</h1>
+        <p class="subtitle">Software Engineer / Product Manager</p>
+        
+        <div class="languages">
+            <a href="./ja/" class="language-card japanese">
+                <h2>日本語</h2>
+                <p>職務経歴書を見る</p>
+            </a>
+            
+            <a href="./en/" class="language-card english">
+                <h2>English</h2>
+                <p>View Resume</p>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

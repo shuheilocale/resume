@@ -18,3 +18,14 @@ _site/
 
 # Claude settings
 .claude/
+
+# Build outputs
+dist/
+node_modules/
+*.pdf
+
+# Lighthouse results
+lighthouse-results/
+
+# Backup files
+*.bundle

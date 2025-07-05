@@ -1,177 +1,51 @@
-# 職務経歴書
+# Resume Repository / 職務経歴書リポジトリ
 
-## 基本情報
+[![CI/CD Pipeline](https://github.com/shuheilocale/resume/actions/workflows/ci.yml/badge.svg)](https://github.com/shuheilocale/resume/actions/workflows/ci.yml)
 
-|key|value|
-|---|---|
-|氏名|山本 修平|
-|居住地|福岡県|
-|最終更新|2025/01/04|
+This repository contains my resume in both Japanese and English, automatically deployed via GitHub Pages.
 
-## 各種アカウント
+このリポジトリは、GitHub Pagesで自動デプロイされる日本語と英語の職務経歴書を管理しています。
 
-<p>
-<a href="https://github.com/shuheilocale"><img src="https://img.shields.io/badge/GitHub-shuheilocale-181717.svg?style=flat-square&logo=github" /></a>
-<a href="https://qiita.com/shuheilocale"><img src="https://img.shields.io/badge/Qiita-shuheilocale-55C500.svg?style=flat-square&logo=qiita" /></a>
-<a href="https://www.wantedly.com/id/shuheilocale"><img src="https://img.shields.io/badge/Wantedly-shuheilocale-21BDDB.svg?style=flat-square&logo=wantedly" /></a>
-</p>
+## 🌐 Live URLs
 
-## 職務要約
+- **Language Selection / 言語選択**: https://shuheilocale.github.io/resume/
+- **Japanese / 日本語**: https://shuheilocale.github.io/resume/ja/
+- **English**: https://shuheilocale.github.io/resume/en/
 
-大学を卒業後、株式会社ジオ技術研究所に入社。計測車両の開発や、自動車のプローブ情報を用いた移動時間の予測の受託研究を行い、PjM兼エンジニアとして約10名ほどのメンバーをまとめる。
-また、2年間株式会社ゼンリンに出向し、出向先の社員と連携して研究やソフトウェアの開発を行う。その後、BIM/CIM向けの地図活用研究や深層学習に関する研究受託に携わり、PjM兼リサーチャーとして地図自動作成のプロジェクトに従事。
-その後、株式会社DATAFLUCTに入社し、データサイエンティストとしてデータ活用の案件に従事。
-その後、株式会社DATAFLUCTとFastLabel株式会社を副業とし、ザ・ハーモニー株式会社に入社。認知症患者専用の会話ロボットの開発にシニアエンジニアとして従事。後半では、エンジニアリングを行う傍らPjMとPdMも担当。
-その後、株式会社PKSHA Associatesに入社。HR領域の立ち上げや、RPAプロダクトへのAI機能実装など、0→1フェーズでの開発に従事。
+## 📄 PDF Downloads
 
-## 技術スタック
+Latest PDF versions are available in the [Releases](https://github.com/shuheilocale/resume/releases) section.
 
-### プログラミング言語
-- C++
-- Python
-- JavaScript
-- TypeScript
+## 🚀 Features
 
-### インフラ・クラウド
-- AWS
-- GCP
-- Docker
+- 🌏 Bilingual support (Japanese/English)
+- 📑 Automatic PDF generation
+- ✅ Markdown linting and spell checking
+- 🔄 Automatic date updates
+- 📊 Performance monitoring with Lighthouse
+- 🎯 SEO optimized
+- 📱 Mobile responsive
 
-### 専門技術
-- 画像処理
-- 自然言語処理
-- 音声認識
-- 機械学習／深層学習
-- IoT（Raspberry Pi）
-- GIS
+## 🛠️ Local Development
 
-### 経験職種
-- ソフトウェアエンジニア
-- 機械学習エンジニア
-- 画像処理エンジニア
-- プロダクトマネージャー（PdM）
-- プロジェクトマネージャー（PjM）
+```bash
+# Install dependencies
+npm install
 
-## 職務経歴
+# Start local server
+npm run serve
 
-### 株式会社PKSHA Associates（2024/05〜現在）
-**事業内容：** RPAソリューションの企画・開発・販売
+# Run linter
+npm run lint
 
-#### RPAプロダクトのAI機能開発（2024/09〜現在）
-- **概要：** 既存のRPAプロダクトに対してのAI機能開発に従事。プロダクトの企画、他部署との連携、モック開発、ユーザーインタビューなどを実施
-- **担当フェーズ：** 企画、ロジック検討、開発、UXリサーチ
-- **使用技術：** Python、AWS
-- **チーム規模・役割：** 4名、PdM兼プロダクトエンジニア
+# Generate PDFs locally
+npm run pdf
+```
 
-#### 生成系AIを用いた求人票の自動化作成（2024/05〜2024/08）
-- **概要：** HRの領域の新規事業開発（0→1）に従事。プロダクトの企画、モック開発、ユーザーインタビュー、UXリサーチを実施
-- **担当フェーズ：** 企画、開発、UXリサーチ
-- **使用技術：** Python、AWS
-- **チーム規模・役割：** 2名、プロダクトエンジニア
+## 📖 Documentation
 
-### 個人事業（副業）（2024/09〜現在）
-**事業内容：** トレーニングジムの入出装置開発、スマホ使用検知開発
+See [OPERATIONS.md](OPERATIONS.md) for detailed operational guidelines.
 
-#### トレーニングジムの入出装置開発及びスマホ検知（2024/09〜現在）
-- **概要：** 無人ジム化のための入出装置の開発とセキュリティカメラからのスマホ使用者の検知アルゴリズムの検討
-- **担当フェーズ：** ロジック検討、開発、エッジデバイス実装
-- **使用技術：** Python、Raspberry Pi OS
-- **チーム規模・役割：** 1名、PdM兼エンジニア兼リサーチャー
+## 📝 License
 
-### ザ・ハーモニー株式会社（2021/03〜2024/03）
-**事業内容：** 認知症患者特化型介護施設運営、認知症患者用コミュニケーションロボット開発
-
-#### 認知症専用会話ロボット開発（2021/03〜2024/03）
-- **概要：** 認知症患者向けの会話ロボットの開発に従事。リードエンジニアとして、Raspberry Pi向けのプログラム開発や、インフラの構築やサーバーサイドプログラムの実装など幅広く従事。また、2023年12月からはPdM／PjMに従事。PMFに向けた仮説検証の活動を牽引
-- **担当フェーズ：** エッジデバイスアプリ設計実装、サーバーサイドアプリ設計実装、LP実装、音声データ分析ほか
-- **使用技術：** Python、JavaScript、TypeScript、AWS、Raspberry Pi OS
-- **チーム規模・役割：** 8名、シニアエンジニア／PjM／PdM
-
-### 株式会社DATAFLUCT（2021/03〜現在：副業、2021/02〜2021/03：正社員）
-**事業内容：** データ活用、DXの推進
-
-#### 太陽光パネル設置の適地検出（2023/11〜現在）
-- **概要：** GISデータを用いた太陽光パネル設置の適地を検出するプロジェクトに従事。アルゴリズム開発及び、Webサービスとしてクラウド上にシステムを構築
-- **担当フェーズ：** 要件定義、ロジック設計、実装
-- **使用技術：** Python、GCP
-- **チーム規模・役割：** 3名、データサイエンティスト／エンジニア
-
-#### 土地取得決定支援サービス開発（2021/09〜2021/08）
-- **概要：** 遺跡情報を取得するためのクローラを実装。地図上の遺跡情報を画像処理を用いて抽出
-- **担当フェーズ：** 要件定義、ロジック設計、実装、評価、レポート
-- **使用技術：** Python
-- **チーム規模・役割：** 2名、エンジニア
-
-#### 衛星データからの水田域抽出（2021/02〜2022/12）
-- **概要：** SARデータ等から水田域とカレンダーの抽出。機械学習部のアドバイザー及び実装を担当
-- **担当フェーズ：** ロジック検討
-- **使用技術：** Python
-- **チーム規模・役割：** 3名、アドバイザー
-
-### FastLabel株式会社（副業）（2021/12〜2023/12）
-**事業内容：** アノテーションサービスの提供
-
-#### 様々な研究案件（2021/12〜2023/10）
-- **画像処理：** 分類／検出／Semantic Segmentation／Panoptic Segmentation／姿勢推定／画像生成／OCR／教育資料作成など
-- **自然言語処理：** LLM／プライバシーマスキングなど
-- **音声処理：** STT
-- **担当フェーズ：** 要件定義、ロジック設計、実装、レポート
-- **使用技術：** Python
-- **チーム規模・役割：** 2名、リサーチャー
-
-### 株式会社ジオ技術研究所（2009/04〜2021/01）
-**事業内容：** 3Dデジタル地図・3Dデータの調査製造販売等
-
-#### 路面ペイントの自動抽出研究（2020/04〜2021/01）
-- **概要：** 反射強度画像を入力として、深層学習モデルを用いた路面ペイントの自動抽出、及びアノテーション効率化の検討に従事
-- **担当フェーズ：** 要件定義、研究計画、技術調査、ロジック設計・実装、評価、レポート作成
-- **使用技術：** Python
-- **チーム規模・役割：** 5名、PjM兼リサーチャー兼開発者
-
-#### 道路標識の自動抽出研究（2019/04〜2020/03）
-- **概要：** 車載カメラ画像を入力として、深層学習モデルを用いた標識の自動抽出に従事
-- **担当フェーズ：** 要件定義、研究計画、技術調査、ロジック設計・実装、評価、レポート
-- **使用技術：** Python
-- **チーム規模・役割：** 2名、PjM兼リサーチャー兼開発者
-
-#### 建物経年変化の自動抽出研究（2017/04〜2019/03）
-- **概要：** 年度の違う2枚の画像から建物の変化箇所を抽出する研究に従事
-- **担当フェーズ：** 要件定義、研究計画、技術調査、ロジック設計・実装、評価、レポート作成
-- **使用技術：** Python
-- **チーム規模・役割：** 2名、PjM兼リサーチャー
-
-#### プローブ情報を用いた移動時間予測の研究（2012/04〜2016/03）
-- **概要：** プローブ情報を用いた出発地点から目的地点への移動時間を予測する研究に従事
-- **担当フェーズ：** 要件定義、研究計画、技術調査、ロジック設計・実装、評価、レポート
-- **使用技術：** C++
-- **チーム規模・役割：** 約10名、PjM兼開発者
-
-## 取得資格
-
-- 基本情報処理技術者
-- 応用情報処理技術者
-- CG-ARTS CGエンジニア検定エキスパート
-- CG-ARTS 画像処理エンジニア検定エキスパート
-- 日商簿記検定３級
-- JDLA G検定
-- JDLA E資格
-- AWS Certified Solutions Architect - Associate
-
-## その他取り組み
-
-### ラインスタンプ販売
-- 2024/03時点で累計収入は約500万円（販売数約15万ダウンロード）
-- 名前スタンプ（日本、台湾、タイ、インドネシア）
-- Action Script(Photoshop)にて半自動作成、Pythonにて自動申請
-
-### Qiita技術記事
-- [ディープラーニングで肉体変化のタイムラプスを劇的に見やすくした](https://qiita.com/shuheilocale/items/f0e60416da3bdde38cfc)
-- [ディープラーニングでスクワットのフォームをチェックする](https://qiita.com/shuheilocale/items/bd59ee736e969ea8a8de)
-
-## 自己PR
-
-15年以上のソフトウェア開発経験を持ち、特に画像処理・機械学習・深層学習を活用したプロダクト開発を得意としています。エンジニアリングだけでなく、PjM・PdMとしてのマネジメント経験も豊富で、0→1フェーズの新規事業立ち上げから既存プロダクトの改善まで幅広く対応可能です。
-
-技術的な強みとして、C++での低レベルプログラミングからPythonでの機械学習実装、JavaScriptでのフロントエンド開発まで、フルスタックな開発能力を有しています。また、Raspberry Piを使用したIoT開発やAWSでのインフラ構築など、エッジからクラウドまでEnd-to-Endでシステムを設計・実装できます。
-
-今後は、AIを活用した社会課題解決に貢献したいと考えており、特に高齢化社会における介護・医療分野でのイノベーション創出に関心があります。
+This project is licensed under the MIT License.
