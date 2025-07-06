@@ -10,6 +10,8 @@ jobs:
   generate-ogp:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       
@@ -39,6 +41,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
+      - name: Create output directory
+        run: mkdir -p lighthouse-results
       
       - name: Lighthouse Check
         uses: foo-software/lighthouse-check-action@master
