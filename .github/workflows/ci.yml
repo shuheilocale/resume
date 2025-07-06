@@ -90,6 +90,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: [generate-pdf]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       
