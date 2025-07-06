@@ -56,6 +56,27 @@
 - プロダクトマネージャー（PdM）
 - プロジェクトマネージャー（PjM）
 
+## キャリアタイムライン
+
+```mermaid
+gantt
+    title 本業・副業の時系列（2009年〜現在）
+    dateFormat YYYY-MM
+    axisFormat %Y
+    
+    section 本業
+    ジオ技術研究所        :done, 2009-04, 2021-01
+    DATAFLUCT（正社員）   :done, 2021-02, 2021-03  
+    ザ・ハーモニー       :done, 2021-03, 2024-03
+    PKSHA Associates     :active, 2024-05, 2025-12
+    
+    section 副業
+    DATAFLUCT（副業）    :active, 2021-03, 2025-12
+    FastLabel           :done, 2021-12, 2023-12
+    個人事業            :active, 2024-09, 2025-12
+    GEOTRA              :active, 2025-02, 2025-12
+```
+
 ## 職務経歴
 
 ### 株式会社PKSHA Associates（2024/05〜現在）
