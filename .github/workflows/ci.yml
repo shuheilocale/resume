@@ -48,12 +48,12 @@ jobs:
       - name: Generate Japanese PDF
         run: |
           mkdir -p dist
-          npx md-to-pdf ja/index.md --pdf-options '{"format": "A4", "margin": "20mm", "displayHeaderFooter": true, "headerTemplate": "<div style=\"font-size: 9px; margin-left: 20px;\">山本修平 - 職務経歴書</div>", "footerTemplate": "<div style=\"font-size: 9px; margin: 0 auto;\"><span class=\"pageNumber\"></span> / <span class=\"totalPages\"></span></div>"}'
+          npx md-to-pdf ja/index.md --pdf-options '{"format": "A4", "margin": "20mm", "displayHeaderFooter": true, "headerTemplate": "<div style=\"font-size: 9px; margin-left: 20px;\">山本修平 - 職務経歴書</div>", "footerTemplate": "<div style=\"font-size: 9px; margin: 0 auto;\"><span class=\"pageNumber\"></span> / <span class=\"totalPages\"></span></div>"}' --launch-options '{"args": ["--no-sandbox", "--disable-setuid-sandbox"]}'
           mv ja/index.pdf dist/resume_ja.pdf
       
       - name: Generate English PDF
         run: |
-          npx md-to-pdf en/index.md --pdf-options '{"format": "A4", "margin": "20mm", "displayHeaderFooter": true, "headerTemplate": "<div style=\"font-size: 9px; margin-left: 20px;\">Shuhei Yamamoto - Resume</div>", "footerTemplate": "<div style=\"font-size: 9px; margin: 0 auto;\"><span class=\"pageNumber\"></span> / <span class=\"totalPages\"></span></div>"}'
+          npx md-to-pdf en/index.md --pdf-options '{"format": "A4", "margin": "20mm", "displayHeaderFooter": true, "headerTemplate": "<div style=\"font-size: 9px; margin-left: 20px;\">Shuhei Yamamoto - Resume</div>", "footerTemplate": "<div style=\"font-size: 9px; margin: 0 auto;\"><span class=\"pageNumber\"></span> / <span class=\"totalPages\"></span></div>"}' --launch-options '{"args": ["--no-sandbox", "--disable-setuid-sandbox"]}'
           mv en/index.pdf dist/resume_en.pdf
       
       - name: Upload PDFs as artifacts
@@ -75,8 +75,8 @@ jobs:
       - name: Update last modified date
         run: |
           DATE=$(date +%Y/%m/%d)
-          sed -i "s/|最終更新|[^|]*|/|最終更新|${DATE}|/" ja/index.md
-          sed -i "s/|Last Updated|[^|]*|/|Last Updated|${DATE}|/" en/index.md
+          sed -i "s@|最終更新|[^|]*|@|最終更新|${DATE}|@" ja/index.md
+          sed -i "s@|Last Updated|[^|]*|@|Last Updated|${DATE}|@" en/index.md
       
       - name: Commit and push if changed
         run: |
