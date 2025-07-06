@@ -29,3 +29,12 @@ lighthouse-results/
 
 # Backup files
 *.bundle
+*.backup
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Mermaid generated images (keep for GitHub Pages)
+# ja/images/mermaid/
+# en/images/mermaid/
