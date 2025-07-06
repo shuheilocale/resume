@@ -42,17 +42,19 @@ jobs:
         with:
           node-version: '20'
       
-      - name: Install md-to-pdf
-        run: npm install -g md-to-pdf
+      - name: Install dependencies
+        run: npm install md-to-pdf
       
       - name: Generate Japanese PDF
         run: |
           mkdir -p dist
-          md-to-pdf ja/index.md --pdf-options '{"format": "A4", "margin": "20mm", "displayHeaderFooter": true, "headerTemplate": "<div style=\"font-size: 9px; margin-left: 20px;\">山本修平 - 職務経歴書</div>", "footerTemplate": "<div style=\"font-size: 9px; margin: 0 auto;\"><span class=\"pageNumber\"></span> / <span class=\"totalPages\"></span></div>"}' --dest dist/resume_ja.pdf
+          npx md-to-pdf ja/index.md --pdf-options '{"format": "A4", "margin": "20mm", "displayHeaderFooter": true, "headerTemplate": "<div style=\"font-size: 9px; margin-left: 20px;\">山本修平 - 職務経歴書</div>", "footerTemplate": "<div style=\"font-size: 9px; margin: 0 auto;\"><span class=\"pageNumber\"></span> / <span class=\"totalPages\"></span></div>"}'
+          mv ja/index.pdf dist/resume_ja.pdf
       
       - name: Generate English PDF
         run: |
-          md-to-pdf en/index.md --pdf-options '{"format": "A4", "margin": "20mm", "displayHeaderFooter": true, "headerTemplate": "<div style=\"font-size: 9px; margin-left: 20px;\">Shuhei Yamamoto - Resume</div>", "footerTemplate": "<div style=\"font-size: 9px; margin: 0 auto;\"><span class=\"pageNumber\"></span> / <span class=\"totalPages\"></span></div>"}' --dest dist/resume_en.pdf
+          npx md-to-pdf en/index.md --pdf-options '{"format": "A4", "margin": "20mm", "displayHeaderFooter": true, "headerTemplate": "<div style=\"font-size: 9px; margin-left: 20px;\">Shuhei Yamamoto - Resume</div>", "footerTemplate": "<div style=\"font-size: 9px; margin: 0 auto;\"><span class=\"pageNumber\"></span> / <span class=\"totalPages\"></span></div>"}'
+          mv en/index.pdf dist/resume_en.pdf
       
       - name: Upload PDFs as artifacts
         uses: actions/upload-artifact@v4
@@ -63,6 +65,8 @@ jobs:
   update-metadata:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -71,8 +75,8 @@ jobs:
       - name: Update last modified date
         run: |
           DATE=$(date +%Y/%m/%d)
-          sed -i "s/|最終更新|.*|/|最終更新|${DATE}|/" ja/index.md
-          sed -i "s/|Last Updated|.*|/|Last Updated|${DATE}|/" en/index.md
+          sed -i "s/|最終更新|[^|]*|/|最終更新|${DATE}|/" ja/index.md
+          sed -i "s/|Last Updated|[^|]*|/|Last Updated|${DATE}|/" en/index.md
       
       - name: Commit and push if changed
         run: |
