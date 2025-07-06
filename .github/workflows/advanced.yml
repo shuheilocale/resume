@@ -88,6 +88,12 @@ jobs:
       - name: Install dependencies
         run: |
           pip install textstat nltk
+          sudo apt-get update
+          sudo apt-get install -y fonts-noto-cjk
+      
+      - name: Download NLTK data
+        run: |
+          python -c "import nltk; nltk.download('punkt')"
       
       - name: Analyze readability
         run: |

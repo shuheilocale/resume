@@ -1,0 +1,20 @@
+{
+  "ja": {
+    "character_count": 4661,
+    "word_count": 237,
+    "sentence_count": 41,
+    "avg_words_per_sentence": 5.780487804878049
+  },
+  "en": {
+    "flesch_reading_ease": -10.20682095158594,
+    "flesch_kincaid_grade": 22.12338814691152,
+    "gunning_fog": 24.467479131886478,
+    "automated_readability_index": 25.36014423076923,
+    "coleman_liau_index": 21.700834724540893,
+    "reading_time_minutes": 2.063945,
+    "character_count": 9730,
+    "word_count": 1248,
+    "sentence_count": 54,
+    "avg_words_per_sentence": 23.11111111111111
+  }
+}
