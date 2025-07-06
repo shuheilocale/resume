@@ -8,7 +8,7 @@
 |---|---|
 |Name|Shuhei Yamamoto|
 |Location|Fukuoka, Japan|
-|Last Updated|2025/01/04|
+|Last Updated|2025/07/06|
 
 ## Social Accounts
 
@@ -63,13 +63,13 @@ gantt
     title Career Timeline (2009 - Present)
     dateFormat YYYY-MM
     axisFormat %Y
-    
+
     section Main Job
     Geo Technical Laboratory    :done, 2009-04, 2021-01
-    DATAFLUCT (Full-time)      :done, 2021-02, 2021-03  
+    DATAFLUCT (Full-time)      :done, 2021-02, 2021-03
     The Harmony                :done, 2021-03, 2024-03
     PKSHA Associates          :active, 2024-05, 2025-12
-    
+
     section Side Jobs
     DATAFLUCT (Side job)      :active, 2021-03, 2025-12
     FastLabel                 :done, 2021-12, 2023-12

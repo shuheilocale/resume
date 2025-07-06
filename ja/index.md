@@ -8,7 +8,7 @@
 |---|---|
 |氏名|山本 修平|
 |居住地|福岡県|
-|最終更新|2025/01/04|
+|最終更新|2025/07/06|
 
 ## 各種アカウント
 
@@ -63,13 +63,13 @@ gantt
     title 本業・副業の時系列（2009年〜現在）
     dateFormat YYYY-MM
     axisFormat %Y
-    
+
     section 本業
     ジオ技術研究所        :done, 2009-04, 2021-01
-    DATAFLUCT（正社員）   :done, 2021-02, 2021-03  
+    DATAFLUCT（正社員）   :done, 2021-02, 2021-03
     ザ・ハーモニー       :done, 2021-03, 2024-03
     PKSHA Associates     :active, 2024-05, 2025-12
-    
+
     section 副業
     DATAFLUCT（副業）    :active, 2021-03, 2025-12
     FastLabel           :done, 2021-12, 2023-12
