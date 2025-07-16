@@ -8,7 +8,7 @@
 |---|---|
 |Name|Shuhei Yamamoto|
 |Location|Fukuoka, Japan|
-|Last Updated|2025/07/06|
+|Last Updated|2025/07/16|
 
 ## Social Accounts
 
