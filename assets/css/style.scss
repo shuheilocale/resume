@@ -1,0 +1,117 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+// PC向けの横幅を広げる設定
+@media screen and (min-width: 960px) {
+  .wrapper {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  section {
+    width: 75%;
+    float: right;
+    padding-bottom: 50px;
+  }
+
+  header {
+    width: 20%;
+    float: left;
+    position: fixed;
+    -webkit-font-smoothing: subpixel-antialiased;
+  }
+}
+
+// タブレット向けの調整
+@media screen and (min-width: 720px) and (max-width: 960px) {
+  .wrapper {
+    width: 85%;
+    margin: 0 auto;
+  }
+
+  section {
+    width: 70%;
+    float: right;
+    padding-bottom: 50px;
+  }
+
+  header {
+    width: 25%;
+    float: left;
+    position: fixed;
+  }
+}
+
+// テーブルのスタイル改善
+table {
+  width: 100%;
+  margin: 15px 0;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 10px 15px;
+  border: 1px solid #e5e5e5;
+}
+
+table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+// コードブロックのスタイル改善
+pre {
+  padding: 12px;
+  overflow-x: auto;
+  background: #f8f8f8;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+}
+
+// リンクのスタイル
+a {
+  color: #267CB9;
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  color: #069;
+  text-decoration: underline;
+}
+
+// 見出しのスタイル改善
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+}
+
+h2 {
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 5px;
+}
+
+// リストのスタイル改善
+ul, ol {
+  margin-left: 20px;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+// Mermaid図のスタイル
+.mermaid {
+  text-align: center;
+  margin: 20px 0;
+}
+
+// 画像のスタイル
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+}
