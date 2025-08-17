@@ -1,0 +1,39 @@
+sequenceDiagram
+    participant User as 利用者
+    participant Reader as QR/NFCリーダー
+    participant RPi as Raspberry Pi
+    participant Camera as カメラ
+    participant API as API Server<br/>(Workers)
+    participant DB as Database<br/>(D1)
+    participant Door as 電子錠
+    participant LED as LED/音声
+    participant Dashboard as ダッシュボード
+
+    User->>Reader: カード/QRコード提示
+    Reader->>RPi: トークン読み取り
+    RPi->>Camera: 画像撮影指示
+    Camera-->>RPi: 画像データ
+
+    RPi->>API: 認証リクエスト<br/>(トークン+画像)
+    API->>DB: ユーザー検証
+    DB-->>API: 検証結果
+
+    alt 認証成功
+        API-->>RPi: 認証OK
+        RPi->>Door: 解錠指示
+        RPi->>LED: 成功表示
+        RPi->>DB: 在館人数更新
+        RPi->>DB: ログ記録
+        Door-->>User: ドア解錠
+        LED-->>User: 緑LED点灯<br/>成功音
+    else 認証失敗
+        API-->>RPi: 認証NG
+        RPi->>LED: エラー表示
+        LED-->>User: 赤LED点滅<br/>エラー音
+    end
+
+    Dashboard->>API: 定期データ取得
+    API->>DB: データクエリ
+    DB-->>API: 最新データ
+    API-->>Dashboard: 在館人数・システム状態
+    Dashboard-->>Dashboard: グラフ更新
