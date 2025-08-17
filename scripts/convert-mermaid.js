@@ -62,12 +62,12 @@ function processMermaidInFile(filePath) {
     
     try {
       // SVGに変換（GitHub Actions用に--no-sandboxを追加）
-      execSync(`npx -y @mermaid-js/mermaid-cli@latest -i "${mmdFile}" -o "${svgFile}" -t dark -b transparent -p /tmp/puppeteer-config.json`, {
+      execSync(`npx -y @mermaid-js/mermaid-cli@latest -i "${mmdFile}" -o "${svgFile}" -t default -b transparent -p /tmp/puppeteer-config.json`, {
         stdio: 'inherit'
       });
       
       // PNGにも変換（PDFでの互換性のため）
-      execSync(`npx -y @mermaid-js/mermaid-cli@latest -i "${mmdFile}" -o "${pngFile}" -t dark -b white -w 1200 -H 800 -p /tmp/puppeteer-config.json`, {
+      execSync(`npx -y @mermaid-js/mermaid-cli@latest -i "${mmdFile}" -o "${pngFile}" -t default -b white -w 1200 -H 800 -p /tmp/puppeteer-config.json`, {
         stdio: 'inherit'
       });
       
