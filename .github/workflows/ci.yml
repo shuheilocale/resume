@@ -57,17 +57,17 @@ jobs:
       - name: Generate Japanese PDF
         run: |
           mkdir -p dist
-          npx md-to-pdf ja/index.md --config-file .md-to-pdf.config.js --pdf-options '{"headerTemplate": "<div style=\"font-size: 9px; margin-left: 20px; font-family: Noto Sans CJK JP, sans-serif;\">山本修平 - 職務経歴書</div>", "footerTemplate": "<div style=\"font-size: 9px; margin: 0 auto;\"><span class=\"pageNumber\"></span> / <span class=\"totalPages\"></span></div>"}'
+          npx md-to-pdf ja/index.md --config-file .md-to-pdf.config.js --pdf-options '{"margin": {"top": "25mm", "right": "20mm", "bottom": "25mm", "left": "20mm"}, "headerTemplate": "<div style=\"font-size: 9px; margin-left: 20px; font-family: Noto Sans CJK JP, sans-serif;\">山本修平 - 職務経歴書</div>", "footerTemplate": "<div style=\"font-size: 9px; margin: 0 auto;\"><span class=\"pageNumber\"></span> / <span class=\"totalPages\"></span></div>"}'
           mv ja/index.pdf dist/resume_ja.pdf
       
       - name: Generate English PDF
         run: |
-          npx md-to-pdf en/index.md --config-file .md-to-pdf.config.js --pdf-options '{"headerTemplate": "<div style=\"font-size: 9px; margin-left: 20px;\">Shuhei Yamamoto - Resume</div>", "footerTemplate": "<div style=\"font-size: 9px; margin: 0 auto;\"><span class=\"pageNumber\"></span> / <span class=\"totalPages\"></span></div>"}'
+          npx md-to-pdf en/index.md --config-file .md-to-pdf.config.js --pdf-options '{"margin": {"top": "25mm", "right": "20mm", "bottom": "25mm", "left": "20mm"}, "headerTemplate": "<div style=\"font-size: 9px; margin-left: 20px;\">Shuhei Yamamoto - Resume</div>", "footerTemplate": "<div style=\"font-size: 9px; margin: 0 auto;\"><span class=\"pageNumber\"></span> / <span class=\"totalPages\"></span></div>"}'
           mv en/index.pdf dist/resume_en.pdf
       
       - name: Generate Portfolio PDF
         run: |
-          npx md-to-pdf portfolio/amegym-portfolio.md --config-file .md-to-pdf.config.js --pdf-options '{"headerTemplate": "<div style=\"font-size: 9px; margin-left: 20px; font-family: Noto Sans CJK JP, sans-serif;\">ポートフォリオ - フィットネスジム向けIoT入退館管理システム</div>", "footerTemplate": "<div style=\"font-size: 9px; margin: 0 auto;\"><span class=\"pageNumber\"></span> / <span class=\"totalPages\"></span></div>"}'
+          npx md-to-pdf portfolio/amegym-portfolio.md --config-file .md-to-pdf.config.js --pdf-options '{"margin": {"top": "25mm", "right": "20mm", "bottom": "25mm", "left": "20mm"}, "headerTemplate": "<div style=\"font-size: 9px; margin-left: 20px; font-family: Noto Sans CJK JP, sans-serif;\">ポートフォリオ - フィットネスジム向けIoT入退館管理システム</div>", "footerTemplate": "<div style=\"font-size: 9px; margin: 0 auto;\"><span class=\"pageNumber\"></span> / <span class=\"totalPages\"></span></div>"}'
           mv portfolio/amegym-portfolio.pdf dist/portfolio_amegym.pdf
       
       - name: Restore original Markdown files
