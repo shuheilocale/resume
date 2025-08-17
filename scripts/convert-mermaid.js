@@ -5,6 +5,16 @@ const { execSync } = require('child_process');
 // Mermaidブロックを見つける正規表現
 const mermaidRegex = /```mermaid\n([\s\S]*?)```/g;
 
+// Puppeteer設定ファイルを作成（GitHub Actions対応）
+function createPuppeteerConfig() {
+  const configPath = '/tmp/puppeteer-config.json';
+  const config = {
+    "args": ["--no-sandbox", "--disable-setuid-sandbox"]
+  };
+  fs.writeFileSync(configPath, JSON.stringify(config, null, 2));
+  return configPath;
+}
+
 // ファイルを処理する関数
 function processMermaidInFile(filePath) {
   const content = fs.readFileSync(filePath, 'utf8');
@@ -12,6 +22,9 @@ function processMermaidInFile(filePath) {
   let matches = [];
   let match;
   let index = 0;
+  
+  // Puppeteer設定ファイルを作成
+  createPuppeteerConfig();
 
   // Mermaidブロックを検索
   while ((match = mermaidRegex.exec(content)) !== null) {
@@ -48,13 +61,13 @@ function processMermaidInFile(filePath) {
     fs.writeFileSync(mmdFile, item.mermaidContent);
     
     try {
-      // SVGに変換
-      execSync(`npx -y @mermaid-js/mermaid-cli@latest -i "${mmdFile}" -o "${svgFile}" -t dark -b transparent`, {
+      // SVGに変換（GitHub Actions用に--no-sandboxを追加）
+      execSync(`npx -y @mermaid-js/mermaid-cli@latest -i "${mmdFile}" -o "${svgFile}" -t dark -b transparent -p /tmp/puppeteer-config.json`, {
         stdio: 'inherit'
       });
       
       // PNGにも変換（PDFでの互換性のため）
-      execSync(`npx -y @mermaid-js/mermaid-cli@latest -i "${mmdFile}" -o "${pngFile}" -t dark -b white -w 1200 -H 800`, {
+      execSync(`npx -y @mermaid-js/mermaid-cli@latest -i "${mmdFile}" -o "${pngFile}" -t dark -b white -w 1200 -H 800 -p /tmp/puppeteer-config.json`, {
         stdio: 'inherit'
       });
       
