@@ -52,7 +52,7 @@ jobs:
       
       - name: Convert Mermaid diagrams to images
         run: |
-          node scripts/convert-mermaid.js ja/index.md en/index.md portfolio/amegym-portfolio.md
+          node scripts/convert-mermaid.js ja/index.md en/index.md portfolio/fitnessgym-portfolio.md
       
       - name: Generate Japanese PDF
         run: |
@@ -67,12 +67,12 @@ jobs:
       
       - name: Generate Portfolio PDF
         run: |
-          npx md-to-pdf portfolio/amegym-portfolio.md --config-file .md-to-pdf.config.js --pdf-options '{"margin": {"top": "25mm", "right": "20mm", "bottom": "25mm", "left": "20mm"}, "headerTemplate": "<div style=\"font-size: 9px; margin-left: 20px; font-family: Noto Sans CJK JP, sans-serif;\">ポートフォリオ - フィットネスジム向けIoT入退館管理システム</div>", "footerTemplate": "<div style=\"font-size: 9px; margin: 0 auto;\"><span class=\"pageNumber\"></span> / <span class=\"totalPages\"></span></div>"}'
-          mv portfolio/amegym-portfolio.pdf dist/portfolio_amegym.pdf
+          npx md-to-pdf portfolio/fitnessgym-portfolio.md --config-file .md-to-pdf.config.js --pdf-options '{"margin": {"top": "25mm", "right": "20mm", "bottom": "25mm", "left": "20mm"}, "headerTemplate": "<div style=\"font-size: 9px; margin-left: 20px; font-family: Noto Sans CJK JP, sans-serif;\">ポートフォリオ - フィットネスジム向けIoT入退館管理システム</div>", "footerTemplate": "<div style=\"font-size: 9px; margin: 0 auto;\"><span class=\"pageNumber\"></span> / <span class=\"totalPages\"></span></div>"}'
+          mv portfolio/fitnessgym-portfolio.pdf dist/portfolio_fitnessgym.pdf
       
       - name: Restore original Markdown files
         run: |
-          node scripts/restore-mermaid.js ja/index.md en/index.md portfolio/amegym-portfolio.md
+          node scripts/restore-mermaid.js ja/index.md en/index.md portfolio/fitnessgym-portfolio.md
       
       - name: Upload PDFs as artifacts
         uses: actions/upload-artifact@v4
@@ -98,7 +98,7 @@ jobs:
       
       - name: Convert Mermaid for GitHub Pages
         run: |
-          node scripts/convert-mermaid.js ja/index.md en/index.md portfolio/amegym-portfolio.md
+          node scripts/convert-mermaid.js ja/index.md en/index.md portfolio/fitnessgym-portfolio.md
       
       - name: Commit and push if changed
         run: |
@@ -137,6 +137,6 @@ jobs:
           files: |
             dist/resume_ja.pdf
             dist/resume_en.pdf
-            dist/portfolio_amegym.pdf
+            dist/portfolio_fitnessgym.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
