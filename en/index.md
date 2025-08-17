@@ -58,24 +58,11 @@ Currently, I work at PKSHA Associates Inc., focusing on launching HR domain init
 
 ## Career Timeline
 
-```mermaid
-gantt
-    title Career Timeline (2009 - Present)
-    dateFormat YYYY-MM
-    axisFormat %Y
-
-    section Main Job
-    Geo Technical Laboratory    :done, 2009-04, 2021-01
-    DATAFLUCT (Full-time)      :done, 2021-02, 2021-03
-    The Harmony                :done, 2021-03, 2024-03
-    PKSHA Associates          :active, 2024-05, 2025-12
-
-    section Side Jobs
-    DATAFLUCT (Side job)      :active, 2021-03, 2025-12
-    FastLabel                 :done, 2021-12, 2023-12
-    Self-Employment           :active, 2024-09, 2025-12
-    GEOTRA                    :active, 2025-02, 2025-12
-```
+<!-- Mermaid diagram 0 -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/mermaid/index-diagram-0.svg">
+  <img src="images/mermaid/index-diagram-0.png" alt="Diagram 0" style="max-width: 100%; height: auto;">
+</picture>
 
 ## Work Experience
 

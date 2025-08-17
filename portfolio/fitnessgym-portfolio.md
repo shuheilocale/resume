@@ -9,93 +9,11 @@ Raspberry Piを用いたハードウェア制御から、リアルタイムダ�
 
 ## システムアーキテクチャ
 
-```mermaid
-graph TB
-    subgraph "エッジデバイス層"
-        subgraph "Raspberry Pi #1"
-            QR1[QRリーダー]
-            NFC1[NFCリーダー]
-            CAM1[カメラ]
-            GPIO1[GPIO制御]
-            APP1[制御アプリ<br/>Python]
-
-            QR1 --> APP1
-            NFC1 --> APP1
-            CAM1 --> APP1
-            APP1 --> GPIO1
-        end
-
-        subgraph "Raspberry Pi #2"
-            QR2[QRリーダー]
-            NFC2[NFCリーダー]
-            CAM2[カメラ]
-            GPIO2[GPIO制御]
-            APP2[制御アプリ<br/>Python]
-
-            QR2 --> APP2
-            NFC2 --> APP2
-            CAM2 --> APP2
-            APP2 --> GPIO2
-        end
-
-        GPIO1 --> DOOR1[電子錠]
-        GPIO1 --> LED1[LED表示]
-        GPIO1 --> SOUND1[音声通知]
-
-        GPIO2 --> DOOR2[電子錠]
-        GPIO2 --> LED2[LED表示]
-        GPIO2 --> SOUND2[音声通知]
-    end
-
-    subgraph "ネットワーク層"
-        VPN[Tailscale VPN]
-        APP1 -.->|セキュア通信| VPN
-        APP2 -.->|セキュア通信| VPN
-    end
-
-    subgraph "クラウドエッジ層"
-        CF_WORK[Cloudflare Workers<br/>API Functions]
-        CF_D1[(Cloudflare D1<br/>Database)]
-        CF_PAGES[Cloudflare Pages<br/>Static Hosting]
-
-        VPN --> CF_WORK
-        CF_WORK --> CF_D1
-    end
-
-    subgraph "フロントエンド層"
-        DASHBOARD[ダッシュボード<br/>React + TypeScript]
-        CHART[データ可視化<br/>Chart.js]
-
-        CF_PAGES --> DASHBOARD
-        DASHBOARD --> CHART
-    end
-
-    subgraph "データフロー"
-        OCCUPANCY[在館人数管理]
-        METRICS[システムメトリクス]
-        AUTH[認証ログ]
-
-        APP1 --> OCCUPANCY
-        APP2 --> OCCUPANCY
-        APP1 --> METRICS
-        APP2 --> METRICS
-        APP1 --> AUTH
-        APP2 --> AUTH
-
-        OCCUPANCY --> CF_D1
-        METRICS --> CF_D1
-        AUTH --> CF_D1
-    end
-
-    USER[管理者] --> DASHBOARD
-    DASHBOARD --> CF_WORK
-
-    style APP1 fill:#f9f,stroke:#333,stroke-width:2px
-    style APP2 fill:#f9f,stroke:#333,stroke-width:2px
-    style CF_WORK fill:#ff9,stroke:#333,stroke-width:2px
-    style DASHBOARD fill:#9ff,stroke:#333,stroke-width:2px
-    style VPN fill:#f99,stroke:#333,stroke-width:2px
-```
+<!-- Mermaid diagram 0 -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/mermaid/fitnessgym-portfolio-diagram-0.svg">
+  <img src="images/mermaid/fitnessgym-portfolio-diagram-0.png" alt="Diagram 0" style="max-width: 100%; height: auto;">
+</picture>
 
 ## 技術スタック
 
@@ -119,47 +37,11 @@ graph TB
 
 ## データフロー図
 
-```mermaid
-sequenceDiagram
-    participant User as 利用者
-    participant Reader as QR/NFCリーダー
-    participant RPi as Raspberry Pi
-    participant Camera as カメラ
-    participant API as API Server<br/>(Workers)
-    participant DB as Database<br/>(D1)
-    participant Door as 電子錠
-    participant LED as LED/音声
-    participant Dashboard as ダッシュボード
-
-    User->>Reader: カード/QRコード提示
-    Reader->>RPi: トークン読み取り
-    RPi->>Camera: 画像撮影指示
-    Camera-->>RPi: 画像データ
-
-    RPi->>API: 認証リクエスト<br/>(トークン+画像)
-    API->>DB: ユーザー検証
-    DB-->>API: 検証結果
-
-    alt 認証成功
-        API-->>RPi: 認証OK
-        RPi->>Door: 解錠指示
-        RPi->>LED: 成功表示
-        RPi->>DB: 在館人数更新
-        RPi->>DB: ログ記録
-        Door-->>User: ドア解錠
-        LED-->>User: 緑LED点灯<br/>成功音
-    else 認証失敗
-        API-->>RPi: 認証NG
-        RPi->>LED: エラー表示
-        LED-->>User: 赤LED点滅<br/>エラー音
-    end
-
-    Dashboard->>API: 定期データ取得
-    API->>DB: データクエリ
-    DB-->>API: 最新データ
-    API-->>Dashboard: 在館人数・システム状態
-    Dashboard-->>Dashboard: グラフ更新
-```
+<!-- Mermaid diagram 1 -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/mermaid/fitnessgym-portfolio-diagram-1.svg">
+  <img src="images/mermaid/fitnessgym-portfolio-diagram-1.png" alt="Diagram 1" style="max-width: 100%; height: auto;">
+</picture>
 
 ## 主な機能と技術的成果
 
