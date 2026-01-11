@@ -26,7 +26,7 @@ I was seconded to ZENRIN Co., Ltd. for two years, collaborating with their emplo
 
 I then joined DATAFLUCT Inc. as a Data Scientist, working on data utilization projects. While maintaining side jobs at DATAFLUCT and FastLabel Inc., I joined The Harmony Inc. as a Senior Engineer, developing conversation robots for dementia patients. In the latter half of my tenure, I also served as Project Manager and Product Manager alongside my engineering responsibilities.
 
-Currently, I work at PKSHA Associates Inc., focusing on launching HR domain initiatives and implementing AI features in RPA products, specializing in 0→1 phase development. I also contribute to GEOTRA Inc. as a side job, developing a people flow data analysis platform that combines GPS location information with machine learning technology. Additionally, I run my own business developing access control systems for 24-hour gyms and smartphone usage detection systems using security cameras.
+Currently, I work at PKSHA Associates Inc., focusing on launching HR domain initiatives and implementing AI features in RPA products, specializing in 0→1 phase development. From February to November 2025, I contributed to GEOTRA Inc. as a side job, developing a people flow data analysis platform that combines GPS location information with machine learning technology. Additionally, I run my own business developing access control systems for 24-hour gyms and smartphone usage detection systems using security cameras.
 
 ## Technical Stack
 
@@ -81,7 +81,7 @@ Currently, I work at PKSHA Associates Inc., focusing on launching HR domain init
 - **Technologies:** Python, AWS
 - **Team Size & Role:** 2 members, Product Engineer
 
-### GEOTRA Inc. (Side Job) (Feb 2025 - Present)
+### GEOTRA Inc. (Side Job) (Feb 2025 - Nov 2025)
 **Business:** Provides location-based big data analysis platform
 
 #### Internal System Improvements
